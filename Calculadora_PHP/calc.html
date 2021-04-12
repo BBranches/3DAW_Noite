@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora</title>
+</head>
+
+<body>
+  <section style="font-family: 'Trebuchet MS', sans-serif;">
+    <form action="calc.php" method="POST" style="width: 200px; text-align: center; padding: 20px;">
+      <h1>Calculadora</h1>
+      <br>
+      <label for="a">Primeiro número:</label>
+      <br>
+      <input type="number" name="a" id="a">
+      <br><br>
+      <label for="b">Segundo número:</label>
+      <br>
+      <input type="number" name="b" id="b">
+      <br><br>
+      <h4>Operação:</h4>
+      <select name="operacao">
+        <option name="operacao" value="soma">Somar</option>
+        <option name="operacao" value="subtracao">Subtrair</option>
+        <option name="operacao" value="multiplicacao">Multiplicar</option>
+        <option name="operacao" value="divisao">Dividir</option>
+      </select>
+      <br><br>
+      <button style="cursor: pointer;" type="submit">Enviar</button>
+    </form>
+
+  </section>
+</body>
+
+</html>
