@@ -7,10 +7,11 @@
   <title>Calculadora</title>
 </head>
 
-<body>
-  <section style="font-family: 'Trebuchet MS', sans-serif;">
-    <form action="calc.php" method="POST" style="width: 200px; text-align: center; padding: 20px;">
-      <h1>Calculadora</h1>
+<body style="font-family: 'Trebuchet MS', sans-serif; background: darkslategrey; color: #eee;">
+  <section style="width: 100%; text-align: center; padding: 20px;">
+    <form action="calc.php" method="POST"
+      style="padding: 20px; width: 300px; margin: 0 auto; border: 2px solid #eee; border-radius: 10px;">
+      <h1 style="font-size: 2.5em;">Calculadora</h1>
       <br>
       <label for="a">Primeiro número:</label>
       <br>
@@ -22,13 +23,15 @@
       <br><br>
       <h4>Operação:</h4>
       <select name="operacao">
-        <option name="operacao" value="soma">Somar</option>
-        <option name="operacao" value="subtracao">Subtrair</option>
-        <option name="operacao" value="multiplicacao">Multiplicar</option>
-        <option name="operacao" value="divisao">Dividir</option>
+        <option name="operacao">Soma</option>
+        <option name="operacao">Subtração</option>
+        <option name="operacao">Multiplicação</option>
+        <option name="operacao">Divisão</option>
       </select>
       <br><br>
-      <button style="cursor: pointer;" type="submit">Enviar</button>
+      <button
+        style="cursor: pointer; border-radius: 5px; padding: 15px; border:none; background: lightsalmon; color: #111; font-size: 1em; font-weight: 600;"
+        type="submit">Calcular</button>
     </form>
 
   </section>
