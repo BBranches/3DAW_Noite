@@ -15,22 +15,23 @@
       <br>
       <label for="a">Primeiro número:</label>
       <br>
-      <input type="number" name="a" id="a">
+      <input style="padding: 5px; border-radius: 5px;" type="number" name="a" id="a">
       <br><br>
       <label for="b">Segundo número:</label>
       <br>
-      <input type="number" name="b" id="b">
-      <br><br>
+      <input style="padding: 5px; border-radius: 5px;" type="number" name="b" id="b">
+      <br>
       <h4>Operação:</h4>
-      <select name="operacao">
-        <option name="operacao">Soma</option>
-        <option name="operacao">Subtração</option>
-        <option name="operacao">Multiplicação</option>
-        <option name="operacao">Divisão</option>
+      <select name="operacao" style="padding: 5px; border-radius: 5px; font-size: 1em;">
+        <option name="operacao"></option>
+        <option name="operacao" value="soma">Soma</option>
+        <option name="operacao" value="sub">Subtração</option>
+        <option name="operacao" value="mult">Multiplicação</option>
+        <option name="operacao" value="div">Divisão</option>
       </select>
       <br><br>
       <button
-        style="cursor: pointer; border-radius: 5px; padding: 15px; border:none; background: lightsalmon; color: #111; font-size: 1em; font-weight: 600;"
+        style="cursor: pointer; border-radius: 5px; padding: 15px; border:none; background: lightsalmon; color: #111; font-size: 1.2em; font-weight: 600;"
         type="submit">Calcular</button>
     </form>
 
