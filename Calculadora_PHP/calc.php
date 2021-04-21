@@ -1,6 +1,6 @@
 <?php
 setlocale (LC_ALL, 'pt_BR');
-include ("./calc.html");
+include './calc.html';
 echo '<section style="width: 100%; text-align: center; padding: 20px;">';
 if ($_SERVER["REQUEST_METHOD"]  == "POST") {
   
@@ -8,37 +8,38 @@ if ($_SERVER["REQUEST_METHOD"]  == "POST") {
   $bValido = 0;
   $opValido = 0;
   $sinal = "";
+  $result = 0;
 
   $a=$_POST["a"];
   $b=$_POST["b"];
   $op=$_POST["operacao"];
 
-  if (ctype_digit($a)) {
+  if (is_numeric($a)) {
     $aValido = 1;
   } else {
       echo "Preencha o primeiro número<br><br>";
   }
-   if (ctype_digit($b)) {
+   if (is_numeric($b)) {
     $bValido = 1;
   } else {
       echo "Preencha o segundo número<br><br>";
   }
   if(!ctype_alpha($op)) {
-    echo "Escolha um operador<br><br>";
+    echo "Escolha um operação<br><br>";
   } else {
       $opValido = 1;
   }
 
-  function soma (int $num1, int $num2) {
+  function soma (float $num1, float $num2) {
     return $num1 + $num2;
   }
-  function subtracao (int $num1, int $num2) {
+  function subtracao (float $num1, float $num2) {
     return $num1 - $num2;
   }
-  function multiplicacao (int $num1, int $num2) {
+  function multiplicacao (float $num1, float $num2) {
     return $num1 * $num2;
   }
-  function divisao (int $num1, int $num2) {
+  function divisao (float $num1, float $num2) {
     return $num1 / $num2;
   }
 
@@ -63,7 +64,7 @@ if ($_SERVER["REQUEST_METHOD"]  == "POST") {
           $result = multiplicacao($a, $b);
           $sinal = "*";
       }
-      echo "O resultado de $a $sinal $b = $result.";
+      echo "O resultado de $a $sinal $b = $result";
   }   
 } 
 ?>
