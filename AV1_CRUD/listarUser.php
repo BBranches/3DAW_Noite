@@ -5,6 +5,7 @@
   <title>Buscar Usuário</title>
   <link rel="stylesheet" href="css/style.css">
   <script src="js/script.js"></script>
+  <script src="https://kit.fontawesome.com/d924a7553c.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -25,8 +26,8 @@
     <form action="listarUser.php"  method="POST">
       <h1>Buscar Usuário</h1>
       <br>
-      <label for="perfil">Perfil:</label>
-      <input type="text" name="perfil" id="perfil">
+      <label for="id">ID:</label>
+      <input type="text" name="id" id="id">
       <br>
       <h3>OU</h3>
       <br>
@@ -46,10 +47,10 @@ setlocale (LC_ALL, 'pt_BR');
 echo '<section>';
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $op = $_POST["op"];
-    $perfil = $_POST["perfil"];
+    $id = $_POST["id"];
     $nome = $_POST["nome"];
 
-    $perfilValido = 0;
+    $idValido = 0;
     $nomeValido = 0;
 
     include 'connect.php';
@@ -58,37 +59,37 @@ echo '<section>';
     if ($op == "Listar Todos Usuários") {
       $sql = "SELECT * FROM usuarios";
     } elseif ($op == "Buscar Usuário") {
-        if ($perfil != "") {
-          $perfilValido = 1;
-        }
+        if (is_numeric($id)) {
+          $idValido = 1;
+        } 
         if ($nome != "") {
           $nomeValido = 1;
-        }
+        } 
 
-        if ($perfilValido == 1 && $nomeValido == 1) {
-          echo "Escolha apenas uma opção: ou Perfil ou Nome";
-          echo "<br>";
-        } elseif ($perfilValido == 0 && $nomeValido == 0) {
-          echo "Escolha uma das opções: ou perfil ou Nome";
-          echo "<br>";
+        if ($idValido == 1 && $nomeValido == 1) {
+          echo "Escolha apenas uma opção: ou ID ou Nome";
+          echo "<br><br>";
+        } elseif ($idValido == 0 && $nomeValido == 0) {
+          echo "Escolha uma das opções: ou ID ou Nome";
+          echo "<br><br>";
         } else {
-          $sql = "SELECT * FROM usuarios WHERE perfil = '$perfil' || nome = '$nome'";
+          $sql = "SELECT * FROM usuarios WHERE id = '$id' || nome = '$nome'";
         }
     }
-
+    
     $result = $conn->query($sql);
     if($result) {
       echo "<table>";
       echo "<tr>";
-      echo "<th>Nome</th><th>E-mail</th><th>Senha</th><th>Tipo</th><th>Perfil</th>";
+      echo "<th>ID</th><th>Nome</th><th>E-mail</th><th>Senha</th><th>Tipo</th>";
       echo "<br>";
       while ($linha = $result->fetch_assoc()) {
         echo "<tr><tr><tr>";
+        echo "<td> " . $linha["id"] . "</td>";
         echo "<td> " . $linha["nome"] . "</td>";
         echo "<td> " . $linha["email"] . "</td>";
         echo "<td> " . $linha["senha"] . "</td>";
         echo "<td> " . $linha["tipo"] . "</td>";
-        echo "<td> " . $linha["perfil"] . "</td>";
         echo "<br>";
         echo "<tr>";
       }

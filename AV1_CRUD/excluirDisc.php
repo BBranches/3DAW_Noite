@@ -65,8 +65,8 @@ echo '<section>';
       } elseif ($idValido == 0 && $nomeValido == 0) {
         echo "Escolha uma das opções: ou ID ou Nome";
       } else {
-        $sql = "DELETE FROM `disciplinas` WHERE id = '$id' || nome = '$nome'";
-      
+        $sql = "DELETE FROM `disciplinas` WHERE id = $id || nome = '$nome'";
+
         if($conn->query($sql)) {
           echo "Disciplina excluída com sucesso!";
         } else {

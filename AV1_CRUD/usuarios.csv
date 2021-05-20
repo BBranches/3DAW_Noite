@@ -1,7 +1,8 @@
-João;joao@gmail.com;12345;user;user123
-Maria;maria@gmail.com;23451;user;user234
-José;ze@gmail.com;24351;admin;admin1
-Antônio;tonho@gmail.com;34567;user;user354
-Fernando;nando@hotmail.com;1@ab2;admin;adminF
-Helena;lena@yahoo.com.br;Hel-65;admin;LenaAd
-Bruna;bru@gmail.com;B12%u;user;userBru
+ID;Nome;Email;Senha;Tipo
+1;João;joao@gmail.com;12345;Aluno
+2;Maria;maria@gmail.com;23451;Aluna
+3;José;ze@gmail.com;24351;Administrador
+4;Antônio;tonho@gmail.com;34567;Professor
+5;Fernando;nando@hotmail.com;1@ab2;Professor
+6;Helena;lena@yahoo.com.br;Hel-65;Administradora
+7;Bruna;bru@gmail.com;B12%u;Aluna

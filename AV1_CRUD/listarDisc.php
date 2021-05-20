@@ -67,10 +67,10 @@ echo '<section>';
 
         if ($idValido == 1 && $nomeValido == 1) {
           echo "Escolha apenas uma opção: ou ID ou Nome";
-          echo "<br>";
+          echo "<br><br>";
         } elseif ($idValido == 0 && $nomeValido == 0) {
           echo "Escolha uma das opções: ou ID ou Nome";
-          echo "<br>";
+          echo "<br><br>";
         } else {
           $sql = "SELECT * FROM disciplinas WHERE id = '$id' || nome = '$nome'";
         }

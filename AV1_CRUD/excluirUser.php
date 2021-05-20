@@ -24,8 +24,8 @@
     <form action="excluirUser.php" method="POST" class="insertOne">
       <h1>Excluir Usuário</h1>
       <br>
-      <label for="perfil">Perfil:</label>
-      <input type="text" name="perfil" id="perfil">
+      <label for="id">ID:</label>
+      <input type="text" name="id" id="id">
       <br>
       <h3>OU</h3>
       <br>
@@ -43,29 +43,29 @@ setlocale (LC_ALL, 'pt_BR');
 echo '<section>';
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $op = $_POST["op"];
-    $perfil = $_POST["perfil"];
+    $id = $_POST["id"];
     $nome = $_POST["nome"];
 
-    $perfilValido = 0;
+    $idValido = 0;
     $nomeValido = 0;
 
     include 'connect.php';
     $sql = 0;
 
     if ($op == "Excluir Usuário") {
-      if ($perfil != "") {
-        $perfilValido = 1;
+      if (is_numeric($id)) {
+        $idValido = 1;
       }
       if ($nome != "") {
         $nomeValido = 1;
       }
 
-      if ($perfilValido == 1 && $nomeValido == 1) {
+      if ($idValido == 1 && $nomeValido == 1) {
         echo "Escolha apenas uma opção: ou ID ou Nome";
-      } elseif ($perfilValido == 0 && $nomeValido == 0) {
+      } elseif ($idValido == 0 && $nomeValido == 0) {
         echo "Escolha uma das opções: ou ID ou Nome";
       } else {
-        $sql = "DELETE FROM `usuarios` WHERE perfil = '$perfil' || nome = '$nome'"; 
+        $sql = "DELETE FROM `usuarios` WHERE id = $id || nome = '$nome'"; 
 
         if($conn->query($sql)) {
           echo "Usuário excluído com sucesso!";

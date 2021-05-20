@@ -74,28 +74,28 @@ echo '<section>';
             if (is_numeric($novoValor)) {
               $novoValorValido = 1;
             } else {
-              echo "Insira um ID (numérico) válido.";
+              echo "Insira um novo ID (numérico) válido.";
               echo "<br><br>";
             }
             if($novoValorValido == 1) {
               $sql = "UPDATE `disciplinas` SET `id`='$novoValor' WHERE id = '$id'";
             }
           } elseif ($operacao == "nome") {
-            if ($novoValor != "") {
-              $novoValorValido = 1;
-            } else {
-              echo "Preencha com o nome da disciplina.";
-              echo "<br><br>";
-            }
-            if($novoValorValido == 1) {
-              $sql = "UPDATE `disciplinas` SET `nome`='$novoValor' WHERE id = '$id'";
-            }
+              if ($novoValor != "") {
+                $novoValorValido = 1;
+              } else {
+                echo "Preencha com o novo nome da disciplina.";
+                echo "<br><br>";
+              }
+              if($novoValorValido == 1) {
+                $sql = "UPDATE `disciplinas` SET `nome`='$novoValor' WHERE id = '$id'";
+              }
           } elseif ($operacao == "periodo"){
               if (is_numeric($novoValor)) {
                 $novoValorValido = 1;
                 $novoValor = $novoValor."º";
               } else {
-                echo "Insira o valor (numérico) do périodo.";
+                echo "Insira o novo valor (numérico) do périodo.";
                 echo "<br><br>";
               }
               if($novoValorValido == 1) {
@@ -105,7 +105,7 @@ echo '<section>';
               if (is_numeric($novoValor)) {
                 $novoValorValido = 1;
               } else {
-                echo "Insira um ID de Pré-Requisito (numérico) válido (0 caso não tenha).";
+                echo "Insira um novo ID de Pré-Requisito (numérico) válido (0 caso não tenha).";
                 echo "<br><br>";
               }
               if($novoValorValido == 1) {
@@ -115,20 +115,21 @@ echo '<section>';
               if (is_numeric($novoValor)) {
                 $novoValorValido = 1;
               } else {
-                echo "Insira o valor (numérico) dos créditos.";
+                echo "Insira o novo valor (numérico) dos créditos.";
                 echo "<br><br>";
               }
               if($novoValorValido == 1) {
                 $sql = "UPDATE `disciplinas` SET `creditos`='$novoValor' WHERE id = '$id'";
               }
           }
+        
+          $result = $conn->query($sql);
+          if ($result) {
+            echo "Disciplina alterada com sucesso!";
+          } else {
+            echo "Erro ao alterar disciplina!";
+          }
         }
-        $result = $conn->query($sql);
-        if ($result) {
-          echo "Disciplina alterada com sucesso!";
-        } else {
-          echo "Erro ao alterar disciplina!";
-        }
+      }
     }
-  }
 ?>

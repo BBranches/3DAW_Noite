@@ -26,8 +26,8 @@
       <h1>Upload Arquivo Usuário</h1>
       <br><br>
       <h4>Formato dos dados:</h4>
-      <p>nome;email;senha;tipo;perfil</p>
-      <p>nome;email;senha;tipo;perfil</p>
+      <p>id;nome;email;senha;tipo</p>
+      <p>id;nome;email;senha;tipo</p>
       <p>...</p>
       <br><br>
       <label for="file">Arquivo .csv:</label><input type="file" name="file">
@@ -58,15 +58,17 @@
       echo "extensão inválida";
     } else {
       $arquivoR = fopen($arquivo, 'r') or die("Não abriu o arquivo!");
+      fgets($arquivoR);
 
       while(($dados = fgetcsv($arquivoR, 1000, ";")) !== false) {
-        $nome = $dados[0];
-        $email = $dados[1];
-        $senha = $dados[2];
-        $tipo = $dados[3];
-        $perfil = $dados[4];
+        $id = $dados[0];
+        $nome = $dados[1];
+        $email = $dados[2];
+        $senha = $dados[3];
+        $tipo = $dados[4];
+         
 
-        $result = $conn->query ("INSERT INTO usuarios (nome,email,senha,tipo,perfil) VALUES ('$nome','$email','$senha','$tipo','$perfil')");
+        $result = $conn->query ("INSERT INTO usuarios (id,nome,email,senha,tipo) VALUES ($id,'$nome','$email','$senha','$tipo')");
           
         if($result) {
           $includeUser++; 
@@ -75,7 +77,8 @@
         }
       }
       fclose($arquivoR);
-     } 
+     }
+      
     if($includeUser == 0 && $erro > 0) {
       echo "Erro ao inserir usuários!";
     } elseif($includeUser == 1) {
