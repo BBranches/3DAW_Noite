@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Listar Produtos</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/script.js"></script>
+  <script>
+
+    function listarProduto() {
+      let form = document.getElementById("formProduto");
+      let xmlHttp = new XMLHttpRequest();
+      xmlHttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+          //let obj = JSON.parse(this.responseText);
+          document.getElementById("resposta").innerHTML = this.responseText;
+        }
+      }
+      xmlHttp.open("GET", "http://127.3.3.3/AV2/listarProduto.php", true);
+      xmlHttp.send();
+      console.log("requisição enviada");
+    }
+  </script>
+</head>
+
+<body onload="listarProduto()">
+  <header id="header">
+    <!--MENU-->
+    <nav class="nav" id="nav">
+      <ul class="lista">
+        <li><a class="btnMenu" id="home" href="index.html">Home</a></li>
+        <li><a class="btnMenu" href="inserirProduto.html">Inserir Produto</a></li>
+        <li><a class="btnMenu active" href="listarProduto.html">Listar Produto</a></li>
+        <li><a class="btnMenu" href="excluirProduto.html">Excluir Produto</a></li>
+      </ul>
+    </nav>
+  </header>
+  <section>
+    <div class="produtos" id="resposta"></div>
+  </section>
+</body>
+
+</html>

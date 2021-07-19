@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Home</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://kit.fontawesome.com/d924a7553c.js" crossorigin="anonymous"></script>
+  <script src="js/script.js"></script>
+  <script>
+    function listarProdutoCod() {
+      let obj = document.getElementById("formProdutoCod");
+      let xmlHttp = new XMLHttpRequest();
+      xmlHttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+          document.getElementById("resposta").innerHTML = this.responseText;
+        }
+      }
+      xmlHttp.open("GET", "http://127.3.3.3/AV2/listarProdutoCod.php?buscacodigo=" + obj.buscacodigo.value, true);
+      xmlHttp.send();
+      console.log("requisição enviada");
+    }
+  </script>
+</head>
+
+<body>
+  <section>
+    <div>
+      <i class="fas fa-barcode icon"></i>
+      <h1>Sistema de Produtos<br>Loja Ximbolé</h1>
+      <br><br><br>
+      <a class="home" href="inserirProduto.html">Inserir Produto</a><br><br>
+      <a class="home" href="listarProduto.html">Listar Produtos</a><br><br>
+      <a class="home" href="excluirProduto.html">Excluir Produtos</a><br><br>
+      <br>
+      <form action="" id="formProdutoCod" class="formulario">
+        <label for="buscacodigo">Código de Barras</label><input type="text" name="buscacodigo">
+        <input type="button" name="op" value="Buscar" class="btn" onclick="listarProdutoCod()">
+      </form><br>
+    </div>
+    <div id="resposta"></div>
+  </section>
+</body>
+
+</html>

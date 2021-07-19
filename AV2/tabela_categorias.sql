@@ -1,0 +1,1 @@
+CREATE TABLE `3dawnoite`.`categorias` ( `id` INT NOT NULL AUTO_INCREMENT , `nome` VARCHAR(200) NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;

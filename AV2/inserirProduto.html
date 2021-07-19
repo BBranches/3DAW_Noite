@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Inserir Produto</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/script.js"></script>
+  <script>
+    function inserirProduto() {
+      let form = document.getElementById("formProduto");
+      let validacao = validarProduto(form);
+      if (validacao == true) {
+        let xmlHttp = new XMLHttpRequest();
+        xmlHttp.onreadystatechange = function () {
+          if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("resposta").innerHTML = this.responseText;
+          }
+        }
+        xmlHttp.open("GET", "http://127.3.3.3/AV2/inserirProduto.php?id=" + form.id.value +
+          "&codigobarra=" + form.codigobarra.value +
+          "&nome=" + form.nome.value +
+          "&fabricante=" + form.fabricante.value +
+          "&categoria=" + form.categoria.value +
+          "&tipo=" + form.tipo.value +
+          "&preco=" + form.preco.value +
+          "&qt=" + form.qt.value +
+          "&peso=" + form.peso.value +
+          "&descricao=" + form.descricao.value +
+          "&linkimg=" + form.linkimg.value +
+          "&data=" + form.data.value +
+          "&ativo=" + form.ativo.value, true);
+        xmlHttp.send();
+        console.log("requisição enviada");
+      }
+    }
+    function validarProduto(form) {
+      if (form.id.value === "") {
+        alert("Preencha o campo ID");
+        form.id.focus();
+        return false;
+      }
+      if (form.nome.value === "") {
+        alert("Preencha o campo Nome");
+        form.nome.focus();
+        return false;
+      }
+      if (form.codigobarra.value === "") {
+        alert("Preencha o campo Código de Barras");
+        form.codigobarra.focus();
+        return false;
+      }
+      if (form.fabricante.value === "") {
+        alert("Preencha o campo Fabricante");
+        form.fabricante.focus();
+        return false;
+      }
+      if (form.categoria.value === "") {
+        alert("Preencha o campo Categoria");
+        form.categoria.focus();
+        return false;
+      }
+      if (form.tipo.value === "") {
+        alert("Preencha o campo Tipo de Produto");
+        form.tipo.focus();
+        return false;
+      }
+      if (form.preco.value === "") {
+        alert("Preencha o campo Preço de Venda");
+        form.preco.focus();
+        return false;
+      }
+      if (form.qt.value === "") {
+        alert("Preencha o campo Quantidade em Estoque");
+        form.qt.focus();
+        return false;
+      }
+      if (form.peso.value === "") {
+        alert("Preencha o campo Peso em Gramas");
+        form.peso.focus();
+        return false;
+      }
+      if (form.descricao.value === "") {
+        alert("Preencha o campo Descrição");
+        form.descricao.focus();
+        return false;
+      }
+      if (form.linkimg.value === "") {
+        alert("Preencha o campo Link da Imagem");
+        form.linkimg.focus();
+        return false;
+      }
+      if (form.data.value === "") {
+        alert("Preencha o campo Data de Inclusão");
+        form.data.focus();
+        return false;
+      }
+      if (form.ativo.value === "") {
+        alert("Preencha o campo Ativo");
+        form.ativo.focus();
+        return false;
+      }
+      return true;
+    }
+  </script>
+</head>
+
+<body>
+  <header id="header">
+    <!--MENU-->
+    <nav class="nav" id="nav">
+      <ul class="lista">
+        <li><a class="btnMenu" id="home" href="index.html">Home</a></li>
+        <li><a class="btnMenu active" href="inserirProduto.html">Inserir Produto</a></li>
+        <li><a class="btnMenu" href="listarProduto.html">Listar Produto</a></li>
+        <li><a class="btnMenu" href="excluirProduto.html">Excluir Produto</a></li>
+      </ul>
+    </nav>
+  </header>
+  <section>
+
+    <form action="" method="GET" name="Produtos" class="formulario" id="formProduto">
+      <h1>Inserir Produto</h1>
+      <div class="form">
+        <label>ID: <input type="text" name="id"></label><br>
+        <label>Código de Barras: <input type="text" name="codigobarra"></label><br>
+        <label>Nome: <input type="text" name="nome"></label><br>
+        <label>Fabricante: <input type="text" name="fabricante"></label><br>
+        <label>Categoria: <select id="categoria" name="categoria" onchange="dropTipo(this.value)"></select></label><br>
+        <label>Tipo de Produto: <select id="tipo" name="tipo"></select></label> <br>
+        <label>Preco de Venda: <input type="text" name="preco"></label><br>
+        <label>Quantidade em Estoque: <input type="text" name="qt"></label><br>
+        <label>Peso em Gramas: <input type="text" name="peso"></label><br>
+        <label>Descrição: <input type="text" name="descricao"></label><br>
+        <label>Link da Imagem: <input type="text" name="linkimg"></label><br>
+        <label>Data de Inclusão: <input type="date" name="data"></label><br>
+        <label for="ativo">Ativo: <select name="ativo" id="ativo">
+            <option value="1">Sim</option>
+            <option value="0">Não</option>
+        </label></select><br><br>
+      </div>
+      <input class="btninsert" type="button" name="op" value="Inserir Produto" onclick="inserirProduto()">
+    </form>
+    <div id="resposta"></div>
+  </section>
+</body>
+<script>
+  function dropCategoria() {
+    let xmlHttp = new XMLHttpRequest();
+    xmlHttp.onreadystatechange = function () {
+      if (this.readyState == 4 && this.status == 200) {
+        console.log(this.responseText);
+
+        let categoria = JSON.parse(this.responseText);
+        let categorias = document.getElementById("categoria");
+
+        for (cat of categoria) {
+          let op = new Option(cat.nome, cat.id);
+
+          categorias.options.add(op);
+        }
+
+        dropTipo(categorias.value);
+      }
+    }
+    xmlHttp.open("GET", "http://127.3.3.3/ex20/categoria.php", true);
+    xmlHttp.send();
+    console.log("requisição enviada");
+  }
+  function dropTipo(cat) {
+    console.log(cat);
+    if (cat.length > 0) {
+      let xmlHttp = new XMLHttpRequest();
+      xmlHttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+          console.log(this.responseText);
+          let tipo = JSON.parse(this.responseText);
+          let tipos = document.getElementById("tipo");
+
+          tipos.length = 0;
+
+          for (tip of tipo) {
+            let op = new Option(tip.nome);
+
+            tipos.options.add(op);
+          }
+        }
+      }
+      xmlHttp.open("GET", "http://127.3.3.3/ex20/tipo.php?categorias=" + cat, true);
+      xmlHttp.send();
+      console.log("requisição enviada");
+    }
+  }
+  dropCategoria();
+</script>
+
+</html>

@@ -1,0 +1,15 @@
+AV2 - Avaliação Funcionalidades CRUD com requisições em Javascript.
+O dono da Loja Ximbolé pediu a turma de 3DAW para construir um conjunto de funcionalidades para sua loja.
+Ele precisa listar os produtos existentes, incluir novos produtos, alterar produtos e excluir produto.
+Produto deve ter os campos: Id, código de barra, nome, fabricante, categoria, tipo de produto, preço de venda, quantidade em estoque, peso em gramas, descrição, link da imagem, data da inclusão e ATIVO.
+
+As funcionalidades são as seguintes:
+1- Listar Produtos todos os produtos ativos com apenas os campos código de barra, nome, categoria, preço de venda e estoque. O nome do produto deve ser um link para outra página contendo todos os campos do produto.
+2 - Listar um produto a partir da digitação do código de barras.
+3 - Detalhes de produto contendo todos os campos de um produto. Esta página de detalhes é acessível através das duas primeiras funcionalidades. A imagem deve aparecer na página de detalhe do produto. Normalmente as imagens se localizam na pasta /imagens. A imagem deve ter o nome formado por "código de barra.JPG", por exemplo "78945646545.jpg".
+4 - Incluir Produto é um formulário com todos os campos. Esses campos devem ser validados no javascript e no backend (PHP). Os campos tipo de produto e categoria devem ser preenchidos em um dropdown, a partir do banco de dados.
+5 - Alterar Produto é um formulário com todos os campos que devem vir já preenchidos com os valores existentes no banco de dados. Assim é necessário uma forma de indicar o produto a ser alterado, pode ser um botão na listagem de produto ou um menu específico para alteração, onde aparecerá uma modal para informação do código de barras do produto.
+6 - Excluir produto é um formulário somente com um campo para informação do código de barra. Após a informação do código deverá aparecer todos os dados do produto e um botão de confirmação. A exclusão deve ser logica, ou seja, a tabela produto deve deve ter um campo para indicar se o produto está ativo ou não. 
+
+
+Todas as requisições devem ser feitas por javascript usando XMLHTTPREQUEST.
