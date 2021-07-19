@@ -35,7 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
   $result = $conn->query($sql);
 
   if($result) {
-    echo "Produto alterado com sucesso.";
+    echo "Produto $nome alterado com sucesso.";
   } else {
       echo "Erro ao alterar Produto.";
     }  

@@ -4,7 +4,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 
   include 'funcoesValidacao.php';
   
-  function ValidarIdDuplicado($id, $conn) {
+  function validarIdDuplicado($id, $conn) {
     $sqlID = "SELECT id FROM produtos WHERE id = $id";
     $result = $conn->query($sqlID);
 
@@ -13,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     }
     return 0;
 }
-  function ValidarCodigoBarraDuplicado($codigoBarra, $conn) {
+  function validarCodigoBarraDuplicado($codigoBarra, $conn) {
     $sqlCod = "SELECT codigobarra FROM produtos WHERE codigobarra = $codigoBarra";
     $result = $conn->query($sqlCod);
 
@@ -48,9 +48,9 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 
   if (validarID($id) != 1 || validarNome($nome) != 1 || validarCodigoBarra($codigobarra) != 1 || validarFabricante($fabricante) != 1 || validarTipo($tipo) != 1 || validarPreco($preco) != 1 || validarQt($qt) != 1 || validarPeso($peso) != 1 || validarDescricao($descricao) != 1 || validarLinkImg($linkimg) != 1 || validarData($data) != 1 || validarAtivo($ativo) != 1) {
     echo "Preencha todos os campos com valores válidos.<br><br>";  
-  } elseif(ValidarIdDuplicado($id, $conn) == 1) {
+  } elseif(validarIdDuplicado($id, $conn) == 1) {
     echo "ID já existe!<br><br>";
-  } elseif(ValidarCodigoBarraDuplicado($codigobarra, $conn) == 1) {
+  } elseif(validarCodigoBarraDuplicado($codigobarra, $conn) == 1) {
     echo "Código de Barra já existe!<br><br>";
   } else {
       $sql = "Insert into produtos (`id`, `codigobarra`, `nome`, `fabricante`, `categoria`, `tipo`, `preco`, `qt`, `peso`, `descricao`, `linkimg`, `data`, `ativo`) VALUES ('$id', '$codigobarra', '$nome', '$fabricante', '$catNome', '$tipo', '$preco', '$qt', '$peso', '$descricao', '$linkimg', '$data', '$ativo')";

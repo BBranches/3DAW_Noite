@@ -11,7 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
       }
         return $result;
     }
-    function ValidarCodigoBarraExistente($codigoBarra, $conn) {
+    function validarCodigoBarraExistente($codigoBarra, $conn) {
       $sqlCod = "SELECT codigobarra FROM produtos WHERE codigobarra = $codigoBarra";
       $result = $conn->query($sqlCod);
   
@@ -24,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     $codigoBarra = $_GET["buscacodigo"];
     $sql = 0;
   
-    if(validarCodigoBarra($codigoBarra) === 1 && ValidarCodigoBarraExistente($codigoBarra, $conn) === 1) {
+    if(validarCodigoBarra($codigoBarra) === 1 && validarCodigoBarraExistente($codigoBarra, $conn) === 1) {
       $sql = "SELECT * FROM produtos WHERE codigobarra=$codigoBarra";
 
       $result = $conn->query($sql);
