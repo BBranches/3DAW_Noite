@@ -13,12 +13,12 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 
     $estado = $_GET['estado'];
 
-    $query = "SELECT * FROM estado WHERE uf='$estado';";
+    $query = "SELECT * FROM estado WHERE uf='$estado'";
     $result = $conn->query($query);
     $linha = $result->fetch_assoc();
     $idEstado = $linha["id"];
 
-    $query2 = "SELECT * FROM cidade WHERE estado='$idEstado';";
+    $query2 = "SELECT * FROM cidade WHERE estado=$idEstado";
     $result2 = $conn->query($query2);
 
     $cidades = array();
