@@ -9,16 +9,28 @@
   <script src="js/script.js"></script>
   <script>
     function listarProdutoCod() {
-      let obj = document.getElementById("formProdutoCod");
-      let xmlHttp = new XMLHttpRequest();
-      xmlHttp.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
-          document.getElementById("resposta").innerHTML = this.responseText;
+      let form = document.getElementById("formProdutoCod");
+      let validacao = validarProduto(form);
+      if (validacao == true) {
+        let xmlHttp = new XMLHttpRequest();
+        xmlHttp.onreadystatechange = function () {
+          if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("resposta").innerHTML = this.responseText;
+          }
         }
+        xmlHttp.open("GET", "http://127.3.3.3/github/AV2/listarProdutoCod.php?codigobarra=" + form.codigobarra.value, true);
+        // "http://localhost/AV2/listarProdutoCod.php?codigobarra="
+        xmlHttp.send();
+        console.log("requisição enviada");
       }
-      xmlHttp.open("GET", "http://127.3.3.3/AV2/listarProdutoCod.php?buscacodigo=" + obj.buscacodigo.value, true);
-      xmlHttp.send();
-      console.log("requisição enviada");
+    }
+    function validarProduto(form) {
+      if (form.codigobarra.value === "") {
+        alert("Preencha o campo Código de Barras");
+        form.codigobarra.focus();
+        return false;
+      }
+      return true;
     }
   </script>
 </head>
@@ -34,7 +46,7 @@
       <a class="home" href="excluirProduto.html">Excluir Produtos</a><br><br>
       <br>
       <form action="" id="formProdutoCod" class="formulario">
-        <label for="buscacodigo">Código de Barras</label><input type="text" name="buscacodigo">
+        <label for="codigobarra">Código de Barras</label><input type="text" name="codigobarra">
         <input type="button" name="op" value="Buscar" class="btn" onclick="listarProdutoCod()">
       </form><br>
     </div>

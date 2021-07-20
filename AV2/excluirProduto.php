@@ -1,6 +1,7 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
   include 'conexao.php';
+  
   function validarCodigoBarra($codigoBarra){
     if (is_numeric($codigoBarra)) {
       $result = 1;

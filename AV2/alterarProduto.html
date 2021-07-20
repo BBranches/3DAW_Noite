@@ -26,7 +26,8 @@
             document.getElementById("resposta").innerHTML = this.responseText;
           }
         }
-        xmlHttp.open("GET", "http://127.3.3.3/AV2/alterarProduto.php?id=" + form.id.value +
+        // "http://localhost/AV2/alterarProduto.php?id="
+        xmlHttp.open("GET", "http://127.3.3.3/github/AV2/alterarProduto.php?id=" + form.id.value +
           "&codigobarra=" + form.codigobarra.value +
           "&nome=" + form.nome.value +
           "&fabricante=" + form.fabricante.value +
@@ -42,7 +43,6 @@
         xmlHttp.send();
         console.log("requisição enviada");
       }
-
     }
     function validarProduto(form) {
       if (form.id.value === "") {
@@ -172,7 +172,8 @@
         dropTipo(categorias.value);
       }
     }
-    xmlHttp.open("GET", "http://127.3.3.3/ex20/categoria.php", true);
+    xmlHttp.open("GET", "http://127.3.3.3/github/AV2/categoriaProduto.php", true);
+    // "http://localhost/AV2/categoriaProduto.php"
     xmlHttp.send();
     console.log("requisição enviada");
   }
@@ -194,7 +195,8 @@
           }
         }
       }
-      xmlHttp.open("GET", "http://127.3.3.3/ex20/tipo.php?categorias=" + cat, true);
+      xmlHttp.open("GET", "http://127.3.3.3/github/AV2/tipoProduto.php?categorias=" + cat, true);
+      // "http://localhost/AV2/tipoProduto.php?categorias="
       xmlHttp.send();
       console.log("requisição enviada");
     }

@@ -8,8 +8,7 @@
     $resultado = $conn->query($sql);
 
     $tipos = array();
-    while ($tipo = mysqli_fetch_assoc($resultado))
-    {
+    while ($tipo = mysqli_fetch_assoc($resultado)) {
         $tipos[] = $tipo;
     }
     print json_encode($tipos);

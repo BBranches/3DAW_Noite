@@ -7,7 +7,6 @@
   <link rel="stylesheet" href="css/style.css">
   <script src="js/script.js"></script>
   <script>
-
     function listarProduto() {
       let form = document.getElementById("formProduto");
       let xmlHttp = new XMLHttpRequest();
@@ -17,7 +16,8 @@
           document.getElementById("resposta").innerHTML = this.responseText;
         }
       }
-      xmlHttp.open("GET", "http://127.3.3.3/AV2/listarProduto.php", true);
+      xmlHttp.open("GET", "http://127.3.3.3/github/AV2/listarProduto.php", true);
+      //"http://localhost/AV2/listarProduto.php"
       xmlHttp.send();
       console.log("requisição enviada");
     }

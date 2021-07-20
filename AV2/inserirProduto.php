@@ -40,11 +40,10 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
   $sql = 0;
   $sqlCat = 0;
 
-  $sqlCat = "SELECT * FROM categorias";
+  $sqlCat = "SELECT * FROM categorias WHERE id = $categoria";
   $resultCat = $conn->query($sqlCat);
   $linha = mysqli_fetch_assoc($resultCat);
   $catNome = $linha["nome"];
-  
 
   if (validarID($id) != 1 || validarNome($nome) != 1 || validarCodigoBarra($codigobarra) != 1 || validarFabricante($fabricante) != 1 || validarTipo($tipo) != 1 || validarPreco($preco) != 1 || validarQt($qt) != 1 || validarPeso($peso) != 1 || validarDescricao($descricao) != 1 || validarLinkImg($linkimg) != 1 || validarData($data) != 1 || validarAtivo($ativo) != 1) {
     echo "Preencha todos os campos com valores válidos.<br><br>";  

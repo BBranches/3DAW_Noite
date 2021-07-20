@@ -16,7 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
       echo "</thead>";
       echo "<tbody>";
     
-     while ($produto = $result->fetch_assoc()) {
+    while ($produto = $result->fetch_assoc()) {
       $id = $produto["id"];
       $codigoBarra = $produto["codigobarra"];
       $nome = $produto["nome"];

@@ -21,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
   $sql = 0;
   $sqlCat = 0;
 
-  $sqlCat = "SELECT * FROM categorias";
+  $sqlCat = "SELECT * FROM categorias WHERE id = $categoria";
   $resultCat = $conn->query($sqlCat);
   $linha = mysqli_fetch_assoc($resultCat);
   $catNome = $linha["nome"];

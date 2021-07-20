@@ -21,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
       return 0;
     }
 
-    $codigoBarra = $_GET["buscacodigo"];
+    $codigoBarra = $_GET["codigobarra"];
     $sql = 0;
   
     if(validarCodigoBarra($codigoBarra) === 1 && validarCodigoBarraExistente($codigoBarra, $conn) === 1) {
@@ -39,7 +39,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         echo "</thead>";
         echo "<tbody>";
       
-        while ($produto = $result->fetch_assoc()) {
+        $produto = $result->fetch_assoc();
           $id = $produto["id"];
           $nome = $produto["nome"];
           $fabricante = $produto["fabricante"];
@@ -68,8 +68,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
             echo "</tr>";
           } else {
               echo "Produto Inativo.";
-          }
-        }
+            }
           echo "</tbody>";
           echo "</table>";   
       } else {

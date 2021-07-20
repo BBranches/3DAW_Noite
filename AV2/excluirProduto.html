@@ -17,7 +17,8 @@
             document.getElementById("resposta").innerHTML = this.responseText;
           }
         }
-        xmlHttp.open("GET", "http://127.3.3.3/AV2/excluirDetalhesProduto.php?codigobarra=" + form.codigobarra.value, true);
+        xmlHttp.open("GET", "http://127.3.3.3/github/AV2/excluirDetalhesProduto.php?codigobarra=" + form.codigobarra.value, true);
+        //"http://localhost/AV2/excluirDetalhesProduto.php?codigobarra="
         xmlHttp.send();
         console.log("requisição enviada");
       }
@@ -38,7 +39,8 @@
           document.getElementById("resposta").innerHTML = this.responseText;
         }
       }
-      xmlHttp.open("GET", "http://127.3.3.3/AV2/excluirProduto.php?codigobarra=" + form.codigobarra.value, true);
+      xmlHttp.open("GET", "http://127.3.3.3/github/AV2/excluirProduto.php?codigobarra=" + form.codigobarra.value, true);
+      // "http://localhost/AV2/excluirProduto.php?codigobarra="
       xmlHttp.send();
       console.log("requisição enviada");
     }
@@ -61,7 +63,7 @@
     <div>
       <form action="" id="formExcluirBuscar" class="formulario">
         <h1>Excluir Produto</h1>
-        <label for="buscacodigo">Código de Barras</label><input type="text" name="codigobarra">
+        <label for="codigobarra">Código de Barras</label><input type="text" name="codigobarra">
         <input type="button" name="op" value="Buscar" class="btn" onclick="listarProdutoCod()">
       </form>
     </div>
