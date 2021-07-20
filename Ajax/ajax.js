@@ -19,7 +19,8 @@ function mostraInfo(strUF) {
               }
           }
       }
-      xmlHttp.open("GET", "http://localhost/ex20_GetCidades.php?estado=" + strUF, true);
+      // "http://localhost/ex20_GetCidades.php?estado="
+      xmlHttp.open("GET", "http://127.3.3.3/github/Ajax/ex20_GetCidades.php?estado=" + strUF, true);
       xmlHttp.send();
       console.log("requisição enviada");
   }

@@ -29,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
   if (validarID($id) != 1 || validarNome($nome) != 1 || validarCodigoBarra($codigobarra) != 1 || validarFabricante($fabricante) != 1 || validarTipo($tipo) != 1 || validarPreco($preco) != 1 || validarQt($qt) != 1 || validarPeso($peso) != 1 || validarDescricao($descricao) != 1 || validarLinkImg($linkimg) != 1 || validarData($data) != 1 || validarAtivo($ativo) != 1) {
     echo "Preencha todos os campos com valores válidos.<br><br>";  
   } else {
-      $sql = "UPDATE produtos set `id`='$id', `codigobarra`='$codigobarra', `nome`='$nome', `fabricante`='$fabricante', `categoria`='$catNome', `tipo`='$tipo', `preco`='$preco', `qt`='$qt', `peso`='$peso', `descricao`='$descricao', `linkimg`='$linkimg', `data`='$data', `ativo`='$ativo' WHERE `id`=$id";
+      $sql = "UPDATE produtos SET `id`='$id', `codigobarra`='$codigobarra', `nome`='$nome', `fabricante`='$fabricante', `categoria`='$catNome', `tipo`='$tipo', `preco`='$preco', `qt`='$qt', `peso`='$peso', `descricao`='$descricao', `linkimg`='$linkimg', `data`='$data', `ativo`='$ativo' WHERE `id`=$id";
   }
 
   $result = $conn->query($sql);

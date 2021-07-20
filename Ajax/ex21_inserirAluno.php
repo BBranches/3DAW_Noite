@@ -5,7 +5,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
   $cpf = $_GET["cpf"];
   $matricula = $_GET["matricula"];
   $uf = $_GET["uf"];
-  $cidade = $_GET["cidades"];
+  $cidade = $_GET["cidade"];
 
     
     $servidor = "localhost";
@@ -17,14 +17,12 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     if ($conn->connect_error) {
         die("Conexão com erro: " . $conn->connect_error);
     }
-    $sql = "Insert into alunos (`id`, `nome`, `email`, `CPF`, `matricula`, `uf`, `cidade`) VALUES (null, '$nome','$email', '$cpf', '$matricula', '$uf', '$cidade')";
+    $sql = "INSERT into alunos (`id`, `nome`, `email`, `CPF`, `matricula`, `uf`, `cidade`) VALUES (null, '$nome','$email', '$cpf', '$matricula', '$uf', '$cidade')";
     $result = $conn->query($sql);
     if($result) {
-      echo json_encode("aluno inserido com sucesso");
+      echo ("Aluno $nome inserido com sucesso");
     } else {
-      echo json_encode("Erro!");
+      echo ("Erro!");
     }
-    
 }
-
 ?>
