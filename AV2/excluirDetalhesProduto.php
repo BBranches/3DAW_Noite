@@ -58,7 +58,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
           echo "<h3>Descrição:</h3>{$produto["descricao"]}";
           echo "<h3>Data de Inclusão:</h3> {$produto["data"]}";
           echo "<h3>Ativo:</h3> {$produto["ativo"]}";   
-          echo '<form action="" method="GET" name="Produtos" class="excluirdetalhes" id="formExcluir"><input class="btninsert" name="button" type="button" value="Excluir" onclick="excluirProduto()"></form>';
+          echo '<form action="" method="GET" name="Produtos" class="excluirdetalhes" id="formExcluir"><input class="btn" name="button" type="button" id="excluir" value="Excluir" onclick="excluirProduto()"></form>';
         } else {
             echo "<div id='det'>";
             echo "Produto Inativo.";

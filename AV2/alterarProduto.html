@@ -110,6 +110,12 @@
         form.ativo.focus();
         return false;
       }
+      if (form.ativo.value == 0) {
+        result = confirm("O produto não ficará ativo. Tem certeza?");
+        if (!result) {
+          return false;
+        }
+      }
       return true;
     }
   </script>
@@ -148,7 +154,7 @@
             <option value="0">Não</option>
         </label></select><br><br>
       </div>
-      <input class="btninsert" name="button" type="button" value="Alterar" onclick="alterarProduto()">
+      <input class="btn" name="button" type="button" value="Alterar" onclick="alterarProduto()">
     </form>
     <div id="resposta"></div>
   </section>

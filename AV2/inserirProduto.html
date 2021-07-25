@@ -101,6 +101,12 @@
         form.ativo.focus();
         return false;
       }
+      if (form.ativo.value == 0) {
+        result = confirm("O produto não ficará ativo. Tem certeza?");
+        if (!result) {
+          return false;
+        }
+      }
       return true;
     }
   </script>
@@ -123,24 +129,25 @@
     <form action="" method="GET" name="Produtos" class="formulario" id="formProduto">
       <h1>Inserir Produto</h1>
       <div class="form">
-        <label>ID: <input type="text" name="id"></label><br>
-        <label>Código de Barras: <input type="text" name="codigobarra"></label><br>
-        <label>Nome: <input type="text" name="nome"></label><br>
-        <label>Fabricante: <input type="text" name="fabricante"></label><br>
+        <label>ID: <input placeholder="ID do produto" type="text" name="id"></label><br>
+        <label>Código de Barras: <input placeholder="Código de Barras do produto" type="text"
+            name="codigobarra"></label><br>
+        <label>Nome: <input placeholder="Nome do produto" type="text" name="nome"></label><br>
+        <label>Fabricante: <input placeholder="Fabricante do produto" type="text" name="fabricante"></label><br>
         <label>Categoria: <select id="categoria" name="categoria" onchange="dropTipo(this.value)"></select></label><br>
         <label>Tipo de Produto: <select id="tipo" name="tipo"></select></label> <br>
-        <label>Preco de Venda: <input type="text" name="preco"></label><br>
-        <label>Quantidade em Estoque: <input type="text" name="qt"></label><br>
-        <label>Peso em Gramas: <input type="text" name="peso"></label><br>
-        <label>Descrição: <input type="text" name="descricao"></label><br>
-        <label>Link da Imagem: <input type="text" name="linkimg"></label><br>
+        <label>Preco de Venda: <input placeholder="Preço do produto" type="text" name="preco"></label><br>
+        <label>Quantidade em Estoque: <input placeholder="Quantidade do produto" type="text" name="qt"></label><br>
+        <label>Peso em Gramas: <input placeholder="Peso do produto" type="text" name="peso"></label><br>
+        <label>Descrição: <input placeholder="Descrição do produto" type="text" name="descricao"></label><br>
+        <label>Link da Imagem: <input placeholder="Imagem do produto" type="text" name="linkimg"></label><br>
         <label>Data de Inclusão: <input type="date" name="data"></label><br>
         <label for="ativo">Ativo: <select name="ativo" id="ativo">
             <option value="1">Sim</option>
             <option value="0">Não</option>
         </label></select><br><br>
       </div>
-      <input class="btninsert" type="button" name="op" value="Inserir Produto" onclick="inserirProduto()">
+      <input class="btn" type="button" name="op" value="Inserir" onclick="inserirProduto()">
     </form>
     <div id="resposta"></div>
   </section>

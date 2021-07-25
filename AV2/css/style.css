@@ -69,7 +69,7 @@ section {
   margin-top: 20px;
 }
 form.formulario {
-  width: 500px;
+  width: 600px;
   display: flex;
   margin-top: 10px;
   flex-wrap: wrap;
@@ -80,7 +80,7 @@ form.formulario {
 }
 div.form {
   display: flex;
-  width: 500px;
+  width:500px;
   flex-direction: column;
   align-items: flex-end;
 }
@@ -94,6 +94,7 @@ h3 {
   color: #735958;
 }
 input {
+  width: 250px;
   padding: 5px; 
   border-radius: 5px;
   background:#735958;
@@ -102,6 +103,22 @@ input {
   font-size: 1rem;
   margin-top: 5px;
   text-align: center;
+}
+::-webkit-input-placeholder {
+  color:#eee;
+  opacity: 0.3;
+}
+:-moz-placeholder { /* Firefox 18- */
+  color:#eee;
+  opacity: 0.3;
+}
+::-moz-placeholder {  /* Firefox 19+ */
+  color:#eee;
+  opacity: 0.3;
+}
+:-ms-input-placeholder {  
+  color:#735958; 
+  opacity: 0.3;
 }
 select {
   padding: 3px; 
@@ -113,6 +130,7 @@ select {
   margin-top: 5px;
 }
 input.btn {
+  width: 200px;
   cursor: pointer; 
   border-radius: 5px; 
   padding: 13px; 
@@ -120,18 +138,13 @@ input.btn {
   background: #735958; 
   color: #eee; 
   font-size: 1.1rem; 
-  font-weight: 600;
-  margin: 10px 6px;
+  margin: 20px 6px;
+  transition: 0.2s;
   
-}
-input.btninsert {
-  width: 200px;
-  padding: 11px; 
-  cursor: pointer;
-  align-items: center;
 }
 input.btn:hover, input.btninsert:hover {
   color:#ff8247;
+  padding: 15px;
 }
 label {
   color:#735958;

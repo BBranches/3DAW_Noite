@@ -30,6 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         $linkImg = $produto["linkimg"];
         $data = $produto["data"];
         $ativo = $produto["ativo"];
+        
       
         $alterar = "./alterarProduto.html?id={$id}" . "&codigobarra=${codigoBarra}" . "&nome=${nome}" . "&fabricante=${fabricante}" . "&categoria=${categoria}" . "&tipo=${tipo}" . "&preco=${preco}" . "&qt=${qt}" . "&peso=${peso}" . "&descricao=${descricao}" . "&linkimg=${linkImg}" . "&data=${data}" . "&ativo=${ativo}";
 

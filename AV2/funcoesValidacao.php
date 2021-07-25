@@ -98,7 +98,9 @@ function validarID($id){
     if ($ativo == "") {
       echo "Preencha se o Produto está Ativo ou não.<br><br>";
       return 0;
-    } 
+    } elseif ($ativo == 0) {
+      echo "O produto não ficará ativo.<br><br>";
+    }
       return 1;
   }
   ?>

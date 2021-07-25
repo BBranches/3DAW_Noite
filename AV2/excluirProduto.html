@@ -23,6 +23,22 @@
         console.log("requisição enviada");
       }
     }
+    function excluirProduto() {
+      let form = document.getElementById("formExcluirBuscar");
+      result = confirm("O produto não será excluído. Tem certeza?");
+      if (result) {
+        let xmlHttp = new XMLHttpRequest();
+        xmlHttp.onreadystatechange = function () {
+          if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("resposta").innerHTML = this.responseText;
+          }
+        }
+        xmlHttp.open("GET", "http://127.3.3.3/github/AV2/excluirProduto.php?codigobarra=" + form.codigobarra.value, true);
+        // "http://localhost/AV2/excluirProduto.php?codigobarra="
+        xmlHttp.send();
+        console.log("requisição enviada");
+      }
+    }
     function validarProduto(form) {
       if (form.codigobarra.value === "") {
         alert("Preencha o campo Código de Barras");
@@ -30,19 +46,6 @@
         return false;
       }
       return true;
-    }
-    function excluirProduto() {
-      let form = document.getElementById("formExcluirBuscar");
-      let xmlHttp = new XMLHttpRequest();
-      xmlHttp.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
-          document.getElementById("resposta").innerHTML = this.responseText;
-        }
-      }
-      xmlHttp.open("GET", "http://127.3.3.3/github/AV2/excluirProduto.php?codigobarra=" + form.codigobarra.value, true);
-      // "http://localhost/AV2/excluirProduto.php?codigobarra="
-      xmlHttp.send();
-      console.log("requisição enviada");
     }
   </script>
 </head>
@@ -63,8 +66,9 @@
     <div>
       <form action="" id="formExcluirBuscar" class="formulario">
         <h1>Excluir Produto</h1>
-        <label for="codigobarra">Código de Barras</label><input type="text" name="codigobarra">
-        <input type="button" name="op" value="Buscar" class="btn" onclick="listarProdutoCod()">
+        <label for="codigobarra">Código de Barras</label><input type="text" placeholder="Código de Barras do produto"
+          name="codigobarra">
+        <input type="button" name="op" value="Pesquisar" class="btn" onclick="listarProdutoCod()">
       </form>
     </div>
     <div id="resposta" class="detalhes"></div>
